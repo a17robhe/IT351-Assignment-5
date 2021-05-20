@@ -3,8 +3,11 @@ package com.example.it351_assignment_5;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -37,7 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
         new JsonTask().execute("https://wwwlab.iit.his.se/brom/kurser/mobilprog/dbservice/admin/getdataasjson.php?type=a17robhe");
     }
-
+    public void onClick(View view){
+        Intent intent = new Intent(this, aboutAppActivity.class);
+        startActivity(intent);
+    }
     @SuppressLint("StaticFieldLeak")
     private class JsonTask extends AsyncTask<String, String, String> {
 
@@ -88,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                     String company = element.getString("company");
                     String address = element.getString("location");
                     String phoneNumber = element.getString("auxdata");
-
+                    Log.d("JSON", element.toString());
                     contacts.add(new Contact(name,address,company, phoneNumber));
                 }
                 adapter.notifyDataSetChanged();

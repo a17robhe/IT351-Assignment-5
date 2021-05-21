@@ -1,6 +1,8 @@
 package com.example.it351_assignment_5;
 
-public class Contact {
+import java.io.Serializable;
+
+public class Contact implements Serializable {
     private String name;
     private String address;
     private String company;
@@ -31,6 +33,6 @@ public class Contact {
 
     @Override
     public String toString() {
-        return name + " - " +  company + " - " + address + " - " + phoneNumber;
+        return name + " - " +  company;
     }
 }
